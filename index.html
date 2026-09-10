@@ -1,708 +1,475 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102a43">
 
-     <title>CEO Mentorias</title>
+  <title data-i18n="meta.title">CEO Mentorias | Mentoria profissional online</title>
+  <meta id="meta-description" name="description" content="Mentorias online personalizadas em tecnologia, qualidade de software, carreira e desenvolvimento profissional.">
+  <meta name="keywords" content="mentoria, QA, software testing, test automation, carreira, tecnologia, agile coaching">
+  <meta name="author" content="CEO Mentorias">
 
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-     <meta name="description" content="">
-     <meta name="keywords" content="">
-     <meta name="author" content="">
-     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="CEO Mentorias">
+  <meta id="og-description" property="og:description" content="Mentorias online personalizadas para acelerar sua carreira.">
+  <meta property="og:image" content="images/logo.png">
 
-     <link rel="stylesheet" href="css/bootstrap.min.css">
-     <link rel="stylesheet" href="css/font-awesome.min.css">
-     <link rel="stylesheet" href="css/owl.carousel.css">
-     <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-     <!-- MAIN CSS -->
-     <link rel="stylesheet" href="css/templatemo-style.css">
+  <style>
+    :root {
+      --primary: #102a43;
+      --secondary: #0f766e;
+      --accent: #f59e0b;
+      --background: #f7fafc;
+      --surface: #ffffff;
+      --text: #243b53;
+      --muted: #627d98;
+      --border: #d9e2ec;
+      --shadow: 0 14px 35px rgba(16, 42, 67, .10);
+      --radius: 18px;
+      --header-height: 76px;
+    }
 
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-height) + 18px); }
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--background);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    body.menu-open { overflow: hidden; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; }
+    button, input, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    section { padding: 88px 0; }
+    .container { width: min(1140px, calc(100% - 32px)); margin-inline: auto; }
+    .skip-link {
+      position: fixed; left: 12px; top: -60px; z-index: 2000;
+      padding: 10px 14px; color: white; background: var(--primary); border-radius: 8px;
+    }
+    .skip-link:focus { top: 10px; }
+
+    .site-header {
+      position: fixed; inset: 0 0 auto; z-index: 1000;
+      min-height: var(--header-height); background: rgba(255,255,255,.96);
+      border-bottom: 1px solid rgba(217,226,236,.85); backdrop-filter: blur(12px);
+    }
+    .navbar { min-height: var(--header-height); display: flex; align-items: center; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; flex-shrink: 0; text-decoration: none; }
+    .brand img { width: auto; height: 54px; object-fit: contain; }
+    .menu-toggle {
+      display: none; margin-left: auto; padding: 9px 12px; color: var(--primary);
+      background: transparent; border: 1px solid var(--border); border-radius: 10px; cursor: pointer;
+    }
+    .nav-panel { display: flex; flex: 1; align-items: center; gap: 22px; }
+    .nav-links { display: flex; align-items: center; gap: 4px; padding: 0; margin: 0 auto; list-style: none; }
+    .nav-links a { display: block; padding: 10px 12px; font-weight: 700; text-decoration: none; border-radius: 9px; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--secondary); background: #edfdf9; outline: none; }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .linkedin-link { color: #0a66c2; font-size: 1.25rem; text-decoration: none; }
+    .language-switcher { display: flex; padding: 4px; background: #edf2f7; border-radius: 999px; }
+    .language-switcher button {
+      min-width: 52px; padding: 7px 10px; color: var(--primary); background: transparent;
+      border: 0; border-radius: 999px; font-size: .82rem; font-weight: 800; cursor: pointer;
+    }
+    .language-switcher button.active { color: white; background: var(--secondary); }
+
+    .hero {
+      min-height: 760px; padding: calc(var(--header-height) + 90px) 0 90px;
+      display: grid; place-items: center; color: white;
+      background: linear-gradient(110deg, rgba(16,42,67,.98), rgba(15,118,110,.85)),
+                  url("images/slider-image1.jpg") center/cover no-repeat;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.12fr .88fr; align-items: center; gap: 56px; }
+    .eyebrow { margin: 0 0 12px; color: #fcd34d; font-weight: 900; letter-spacing: .11em; text-transform: uppercase; }
+    .hero h1 { max-width: 780px; margin: 0 0 20px; font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.05; }
+    .hero p { max-width: 690px; margin: 0 0 30px; color: #e6fffa; font-size: clamp(1rem, 2vw, 1.25rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 48px; padding: 11px 20px; border: 2px solid transparent; border-radius: 999px;
+      font-weight: 800; text-decoration: none; cursor: pointer; transition: transform .2s, box-shadow .2s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,.18); }
+    .btn-primary { color: #102a43; background: #fcd34d; }
+    .btn-outline { color: white; border-color: rgba(255,255,255,.75); background: transparent; }
+    .hero-card { padding: 34px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22); border-radius: var(--radius); backdrop-filter: blur(8px); }
+    .hero-card h2 { margin-top: 0; }
+    .hero-list { padding: 0; margin: 0; list-style: none; }
+    .hero-list li { display: flex; gap: 10px; margin-top: 13px; }
+    .hero-list i { margin-top: 5px; color: #fcd34d; }
+
+    .section-heading { max-width: 760px; margin: 0 auto 46px; text-align: center; }
+    .section-heading h2 { margin: 0 0 12px; color: var(--primary); font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.15; }
+    .section-heading p { margin: 0; color: var(--muted); font-size: 1.05rem; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .card { padding: 30px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .step-number { display: grid; place-items: center; width: 48px; height: 48px; color: white; background: var(--secondary); border-radius: 14px; font-weight: 900; }
+    .card h3 { margin: 20px 0 8px; color: var(--primary); }
+    .card p { color: var(--muted); }
+
+    .about { background: white; }
+    .about-grid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: start; gap: 50px; }
+    .about-copy h2, .form-card h2 { margin-top: 0; color: var(--primary); font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; }
+    .benefit { display: grid; grid-template-columns: 48px 1fr; gap: 16px; margin-top: 26px; }
+    .benefit-icon { display: grid; place-items: center; width: 48px; height: 48px; color: white; background: var(--secondary); border-radius: 14px; }
+    .benefit h3 { margin: 0 0 4px; }
+    .benefit p { margin: 0; color: var(--muted); }
+    .form-card { padding: 34px; background: var(--primary); color: white; border-radius: var(--radius); box-shadow: var(--shadow); }
+    .form-card h2 { color: white; }
+    .form-group { margin-bottom: 16px; }
+    label { display: block; margin-bottom: 6px; font-weight: 800; }
+    .form-control { width: 100%; padding: 13px 14px; color: var(--text); background: white; border: 1px solid var(--border); border-radius: 10px; }
+    textarea.form-control { min-height: 130px; resize: vertical; }
+    .form-control:focus { border-color: #5eead4; outline: 3px solid rgba(94,234,212,.24); }
+    .form-note { margin: 12px 0 0; color: #cbd5e1; font-size: .86rem; }
+
+    .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+    .person { overflow: hidden; padding: 0; }
+    .person img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
+    .person-content { padding: 22px; }
+    .person h3 { margin: 0; }
+    .person-role { display: block; min-height: 52px; margin: 5px 0 16px; color: var(--muted); }
+    .social { display: flex; gap: 10px; padding: 0; margin: 0; list-style: none; }
+    .social a { display: grid; place-items: center; width: 38px; height: 38px; color: white; background: var(--secondary); border-radius: 50%; text-decoration: none; }
+
+    .courses { background: #eef7f5; }
+    .course-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .course { overflow: hidden; padding: 0; }
+    .course img { width: 100%; aspect-ratio: 16/10; object-fit: cover; }
+    .course-body { padding: 24px; }
+    .course-meta { display: flex; flex-wrap: wrap; gap: 12px; color: var(--muted); font-size: .9rem; }
+    .course h3 { margin: 16px 0 8px; }
+    .course-footer { display: flex; justify-content: space-between; align-items: center; gap: 15px; padding-top: 17px; border-top: 1px solid var(--border); }
+    .price { color: var(--secondary); font-size: 1.2rem; font-weight: 900; }
+
+    .testimonial-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .quote { position: relative; }
+    .quote p { color: var(--text); font-size: 1.02rem; }
+    .quote-author { display: flex; align-items: center; gap: 14px; margin-top: 20px; }
+    .quote-author img { width: 58px; height: 58px; border-radius: 50%; object-fit: cover; }
+    .quote-author h3 { margin: 0; }
+    .quote-author span { color: var(--muted); }
+    .stars { margin-top: 12px; color: var(--accent); }
+
+    .contact { color: white; background: linear-gradient(130deg, var(--primary), #164e63); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 50px; }
+    .contact h2 { margin-top: 0; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; }
+    .contact img { min-height: 430px; width: 100%; object-fit: cover; border-radius: var(--radius); }
+
+    footer { padding: 50px 0; color: #cbd5e1; background: #081b2d; }
+    .footer-grid { display: grid; grid-template-columns: 1.2fr .8fr .8fr; gap: 36px; }
+    footer h2 { color: white; font-size: 1.2rem; }
+    footer a { color: #ccfbf1; }
+    .footer-links { padding: 0; list-style: none; }
+    .footer-links li { margin: 9px 0; }
+    .copyright { padding-top: 28px; margin-top: 28px; border-top: 1px solid rgba(255,255,255,.12); text-align: center; }
+
+    @media (max-width: 991px) {
+      :root { --header-height: 70px; }
+      .menu-toggle { display: inline-flex; }
+      .nav-panel {
+        position: fixed; inset: var(--header-height) 0 auto; display: none; max-height: calc(100vh - var(--header-height));
+        padding: 22px 20px 28px; overflow-y: auto; background: white; border-top: 1px solid var(--border); box-shadow: var(--shadow);
+      }
+      .nav-panel.open { display: block; }
+      .nav-links { display: block; }
+      .nav-links a { padding: 13px 10px; }
+      .nav-actions { justify-content: space-between; margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--border); }
+      .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero { min-height: auto; }
+      .hero-card { max-width: 680px; }
+      .team-grid, .course-grid { grid-template-columns: repeat(2, 1fr); }
+      .cards { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      section { padding: 66px 0; }
+      .container { width: min(100% - 24px, 1140px); }
+      .brand img { height: 46px; }
+      .hero { padding-top: calc(var(--header-height) + 62px); }
+      .hero-actions .btn { width: 100%; }
+      .hero-card, .card, .form-card { padding: 24px; }
+      .team-grid, .course-grid, .testimonial-grid, .footer-grid { grid-template-columns: 1fr; }
+      .person-role { min-height: auto; }
+      .contact img { min-height: 260px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+    }
+  </style>
 </head>
-<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+<body>
+  <a class="skip-link" href="#main" data-i18n="accessibility.skip">Ir para o conteúdo</a>
 
-     <!-- PRE LOADER -->
-     <section class="preloader">
-          <div class="spinner">
+  <header class="site-header">
+    <nav class="container navbar" aria-label="Main navigation" data-i18n-aria-label="accessibility.mainNav">
+      <a class="brand" href="#home" aria-label="CEO Mentorias">
+        <img src="images/logo.png" alt="CEO Mentorias">
+      </a>
 
-               <span class="spinner-rotate"></span>
-               
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-panel" data-i18n-aria-label="accessibility.openMenu">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </button>
+
+      <div class="nav-panel" id="nav-panel">
+        <ul class="nav-links">
+          <li><a href="#home" data-i18n="nav.home">Início</a></li>
+          <li><a href="#about" data-i18n="nav.about">Sobre</a></li>
+          <li><a href="#team" data-i18n="nav.team">Equipe</a></li>
+          <li><a href="#courses" data-i18n="nav.courses">Mentorias</a></li>
+          <li><a href="#testimonials" data-i18n="nav.testimonials">Depoimentos</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contato</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a class="linkedin-link" href="https://www.linkedin.com/company/ceo-mentoring-improvements/" target="_blank" rel="noopener noreferrer" aria-label="CEO Mentorias on LinkedIn">
+            <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+          </a>
+          <div class="language-switcher" role="group" aria-label="Language selector" data-i18n-aria-label="accessibility.languageSelector">
+            <button type="button" data-language="pt" aria-pressed="true">PT</button>
+            <button type="button" data-language="en" aria-pressed="false">EN</button>
           </div>
-     </section>
+        </div>
+      </div>
+    </nav>
+  </header>
 
-
-     <!-- MENU -->
-     <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
-          <div class="container">
-
-               <div class="navbar-header">
-                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                         <span class="icon icon-bar"></span>
-                         <span class="icon icon-bar"></span>
-                         <span class="icon icon-bar"></span>
-                         
-                    </button>
-
-                    <!-- lOGO TEXT HERE -->
-                   <spam style="display: flex; justify-content: left; align-items: left; height: 70px;">
-                   
-                    <img src="images/logo.png" alt="CEO">
-                  <!--   <a  style="writing-mode: vertical-rl;  font-size: 12px;">.Mentorias. </a>
-                    <a style="writing-mode: vertical-rl;  font-size: 14px;">_ CEO _ </a>  -->
-                   </spam>
-                
-                    
-                    
-                    
-               </div>
-
-               <!-- MENU LINKS -->
-               <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-nav-first">
-                         <li><a href="#top" class="smoothScroll"> Home</a></li>
-                         <li><a href="#about" class="smoothScroll">Sobre</a></li>
-                         <li><a href="#team" class="smoothScroll">Nossa equipe</a></li>
-                         <li><a href="#courses" class="smoothScroll">Mentorias</a></li>
-                         <li><a href="#testimonial" class="smoothScroll">Depoimentos</a></li>
-                         <li><a href="#contact" class="smoothScroll">Contatos</a></li>
-                         
-                    </ul>
-
-                    <ul class="nav navbar-nav navbar-right">
-                         <li><a href="https://www.linkedin.com/company/ceo-mentoring-improvements/"><i class="fa fa-linkedin"></i> CEO Mentorias</a></li>
-                    </ul>
-
-                   <nav>
-                   <ul>. </ul>      
-                   
-                    <a href="index.html">    <img src="https://flagcdn.com/pt.svg" width="30" alt="Brazil" alt="Português" > PT </a><br>
-                 <!--   <a href="index-en.html"> <img src="https://flagcdn.com/us.svg" width="30" alt="USA" alt="English" > EN </a><br> -->
-                    </nav>
-
-               </div>
-
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow" data-i18n="hero.eyebrow">Mentoria personalizada</p>
+          <h1 data-i18n="hero.title">Transforme sua carreira com mentorias práticas</h1>
+          <p data-i18n="hero.subtitle">Conhecimento aplicado à sua rotina, aos seus objetivos e às oportunidades reais do mercado.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#courses" data-i18n="hero.primaryCta">Conheça as mentorias</a>
+            <a class="btn btn-outline" href="#contact" data-i18n="hero.secondaryCta">Fale conosco</a>
           </div>
-     </section>
-
-
-     <!-- HOME -->
-     <section id="home">
-          <div class="row">
-
-                    <div class="owl-carousel owl-theme home-slider">
-                         <div class="item item-first">
-                              <div class="caption">
-                                   <div class="container">
-                                        <div class="col-md-6 col-sm-12">
-                                             <h1>Mentorias Online</h1>
-                                             <h3>Conhecimento ao seu alcance e adaptado a sua rotina e estilo.</h3>
-                                             <a href="#feature" class="section-btn btn btn-default smoothScroll">Saiba mais...</a>
-                                        </div>
-                                   </div>
-                              </div>
-                         </div>
-
-                         <div class="item item-second">
-                              <div class="caption">
-                                   <div class="container">
-                                        <div class="col-md-6 col-sm-12">
-                                             <h1>Comece sua jornada com mentorias prática!</h1>
-                                             <h3>Suas mentorias serão ferramentas para construir conhecimentos de domínio técnico e atingir o preparo a oportunidades do mercado de trabalho.</h3>
-                                             <a href="#courses" class="section-btn btn btn-default smoothScroll">Veja nosso portfólio de mentorias!</a>
-                                        </div>
-                                   </div>
-                              </div>
-                         </div>
-
-                         <div class="item item-third">
-                              <div class="caption">
-                                   <div class="container">
-                                        <div class="col-md-6 col-sm-12">
-                                             <h1>Metodologias de Mentoria Eficientes</h1>
-                                             <h3>De forma adaptativa e orientativa criamos uma sequencia totalmente customizada ao seu ritmo de aprendizado. Visit <a rel="nofollow" href="https://www.facebook.com/templatemo">templatemo</a> page.</h3>
-                                             <a href="#contact" class="section-btn btn btn-default smoothScroll">Saiba como!</a>
-                                        </div>
-                                   </div>
-                              </div>
-                         </div>
-                    </div>
-          </div>
-     </section>
-
-
-     <!-- FEATURE -->
-     <section id="feature">
-          <div class="container">
-               <div class="row">
-                  <div class="about-info"  style="justify-content: center;">
-                              <h2>Inicie sua jornada para uma vida melhor com mentorias online!</h2>
-                  </div>             
-
-                    <div class="col-md-4 col-sm-4">
-                         <div class="feature-thumb">
-                              <span>01</span>
-                              <h3>Entre em contato:</h3>
-                              <p>Aqui temos uma pequena entrevista para compartilhar suas expectativas e desejos.</p>
-                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4">
-                         <div class="feature-thumb">
-                              <span>02</span>
-                              <h3>Plano de mentoria...</h3>
-                              <p>Baseado nas expectativas e disponibilidade criamos um plano customizado.</p>
-                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4">
-                         <div class="feature-thumb">
-                              <span>03</span>
-                              <h3>Prática!</h3>
-                              <p>Partimos para prática e criamos desafios e materiais adequados ao seu perfil.</p>
-                         </div>
-                    </div>
-
-               </div>
-          </div>
-     </section>
-
-
-     <!-- ABOUT -->
-     <section id="about">
-          <div class="container">
-               <div class="row">
-
-                    <div class="col-md-6 col-sm-12">
-                         <div class="about-info">
-                              <h2>Inicie sua jornada para uma vida melhor com mentorias online!</h2>
-
-                              <figure>
-                                   <span><i class="fa fa-users"></i></span>
-                                   <figcaption>
-                                        <h3>Sessões de mentoria Online</h3>
-                                        <p>Faça esta jornada totalmente no conforme de casa ou onde for mais viável para sua comodidade.</p>
-                                   </figcaption>
-                              </figure>
-
-                              <figure>
-                                   <span><i class="fa fa-certificate"></i></span>
-                                   <figcaption>
-                                        <h3>Mentores altamente qualificados</h3>
-                                        <p>Mais de 20 anos de experiências e estudos de casos em várias empresas globais, como J&J, VW, CitiBank, etc.</p>
-                                   </figcaption>
-                              </figure>
-
-                              <figure>
-                                   <span><i class="fa fa-bar-chart-o"></i></span>
-                                   <figcaption>
-                                        <h3>Suporte por mais 6 meses</h3>
-                                        <p>Após cessar as mentorias terão suporte por mais 6 meses através de nosso canal de contato.</p>
-                                   </figcaption>
-                              </figure>
-                         </div>
-                    </div>
-
-                    <div class="col-md-offset-1 col-md-4 col-sm-12">
-                         <div class="entry-form">
-                              <form>
-                                   <h2>Inicie sua mentoria!</h2>
-                                   <input type="text" name="firstname" class="form-control" placeholder="Nome completo" required="">
-
-                                   <input type="email" name="email" class="form-control" placeholder="Seu endereço de email" required="">
-
-                                   <textarea class="form-control" rows="6" placeholder="Seus objetivos iniciais" name="message" required=""></textarea>
-
-                                   <button  type="submit" class="submit" onclick="submitForms()"> Enviar </button>
-                                                                        
-                              </form>
-
-                                   <script>
-                                   function submitForms(){
-                                   var fnames = document.getElementsByName("firstname")[0].value;
-                                   var emails = document.getElementsByName("email")[0].value;
-                                   var messages = document.getElementsByName("message")[0].value;
-                                   window.open("mailto:mentoringceoknowhow@gmail.com?subject=Inicie sua mentoria!%20&body=NOME:%20"+fnames+"%0D%0A%0DEmail:"+emails+"%0D%0A%0DMensagem:"+messages);
-                                   }
-                                   </script>
-
-                         </div>
-                    </div>
-
-               </div>
-          </div>
-     </section>
-
-
-     <!-- TEAM -->
-     <section id="team">
-          <div class="container">
-               <div class="row">
-
-                    <div class="col-md-12 col-sm-12">
-                         <div class="section-title">
-                              <h2>Mentores <small>Encontre seus mentores</small></h2>
-                         </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6">
-                         <div class="team-thumb">
-                              <div class="team-image">
-                                   <img src="images/author-image1.jpg" class="img-responsive" alt="">
-                              </div>
-                              <div class="team-info">
-                                   <h3>Carlos Oliveira</h3>
-                                   <span>Senior Software Tester Engineer </span>
-                              </div>
-                              <ul class="social-icon">
-                                   <li><a href="https://www.linkedin.com/in/carlosoliveira1984" class="fa fa-linkedin"></a></li>
-                                   <li><a href="https://github.com/carlos-eduardo-1984" class="fa fa-github"></a></li>
-                              </ul>
-                         </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6">
-                         <div class="team-thumb">
-                              <div class="team-image">
-                                   <img src="images/author-image2.jpg" class="img-responsive" alt="">
-                              </div>
-                              <div class="team-info">
-                                   <h3>Jennifer S.</h3>
-                                   <span>Digital Marketing</span>
-                              </div>
-                              <ul class="social-icon">
-                                   <li><a href="#" class="fa fa-google"></a></li>
-                                   <li><a href="#" class="fa fa-instagram"></a></li>
-                              </ul>
-                         </div>
-                    </div>
-
-                    <div class="col-md-3 col-sm-6">
-                         <div class="team-thumb">
-                              <div class="team-image">
-                                   <img src="images/author-image3.jpg" class="img-responsive" alt="">
-                              </div>
-                              <div class="team-info">
-                                   <h3>Bianca Racio</h3>
-                                   <span>Scrum Coach & IT Business Analyst</span>
-                              </div>
-                              <ul class="social-icon">
-                                   <li><a href="https://www.linkedin.com/in/bianca-n-rascio-74127b108/" class="fa fa-linkedin"></a></li>
-                                   <li><a href="mailto:biancarascio@gmail.com" class="fa fa-envelope-o"></a></li>
-                              </ul>
-                         </div>
-                    </div>
-
-                     <div class="col-md-3 col-sm-6">
-                         <div class="team-thumb">
-                              <div class="team-image">
-                                   <img src="images/author-image4.jpg" class="img-responsive" alt="">
-                              </div>
-                              <div class="team-info">
-                                   <h3>Jonatahn Silva</h3>
-                                   <span>Senior Full Stack Software Engineer</span>
-                              </div>
-                              <ul class="social-icon">
-                                   <li><a href="mailto:jilds@outlook.com" class="fa fa-envelope-o"></a></li>
-                                   <li><a href="https://www.linkedin.com/in/jonathan-inacio/overlay/contact-info/" class="fa fa-linkedin"></a></li>
-                                   <li><a href="#" class="fa fa-github"></a></li>
-
-                              </ul>
-                         </div>
-                    </div>
-
-               </div>
-          </div>
-     </section>
-
-
-     <!-- Courses -->
-     <section id="courses">
-          <div class="container">
-               <div class="row">
-
-                    <div class="col-md-12 col-sm-12">
-                         <div class="section-title">
-                              <h2>Nosso portfólio de mentorias <small>Aprimore suas habilidades com nossas mentorias!</small></h2>
-                         </div>
-
-                         <div class="owl-carousel owl-theme owl-courses">
-                              <div class="col-md-4 col-sm-4">
-                                   <div class="item">
-                                        <div class="courses-thumb">
-                                             <div class="courses-top">
-                                                  <div class="courses-image">
-                                                       <img src="images/courses-image1.jpg" class="img-responsive" alt="">
-                                                  </div>
-                                                  <div class="courses-date">
-                                                       <span><i class="fa fa-calendar"></i> 30 / 9 / 2025</span>
-                                                       <span><i class="fa fa-clock-o"></i> 4 horas</span>
-                                                  </div>
-                                             </div>
-
-                                             <div class="courses-detail">
-                                                  <h3><a href="mentor1.html">Testes Funcionais para Projetos de Software</a></h3>
-                                                  <p>Desvende uma profissão em TI sem precisar saber programar!</p>
-                                             </div>
-
-                                             <div class="courses-info">
-                                                  <div class="courses-author">
-                                                       <img src="images/author-image1.jpg" class="img-responsive" alt="">
-                                                       <span>Carlos Oliveira</span>
-                                                  </div>
-                                                  <div class="courses-price">
-                                                       <a href="mentor1.html"><span> 480€ </span></a>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                   </div>
-                              </div>
-
-                              <div class="col-md-4 col-sm-4">
-                                   <div class="item">
-                                        <div class="courses-thumb">
-                                             <div class="courses-top">
-                                                  <div class="courses-image">
-                                                       <img src="images/courses-image2.jpg" class="img-responsive" alt="">
-                                                  </div>
-                                                  <div class="courses-date">
-                                                       <span><i class="fa fa-calendar"></i> Em breve</span>
-                                                       <span><i class="fa fa-clock-o"></i> 4 horas </span>
-                                                  </div>
-                                             </div>
-
-                                             <div class="courses-detail">
-                                                  <h3><a href="#">Criando PLRs para Mercados Digitais</a></h3>
-                                                  <p>Desvende o mercado de produtos Digitais e trabalhe de casa!</p>
-                                             </div>
-
-                                             <div class="courses-info">
-                                                  <div class="courses-author">
-                                                       <img src="images/author-image2.jpg" class="img-responsive" alt="">
-                                                       <span>Jennifer S.</span>
-                                                  </div>
-                                                  <div class="courses-price">
-                                                       <a href="#"><span> Em breve </span></a>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                   </div>
-                              </div>
-
-                              <div class="col-md-4 col-sm-4">
-                                   <div class="item">
-                                        <div class="courses-thumb">
-                                             <div class="courses-top">
-                                                  <div class="courses-image">
-                                                       <img src="images/courses-image3.jpg" class="img-responsive" alt="">
-                                                  </div>
-                                                  <div class="courses-date">
-                                                       <span><i class="fa fa-calendar"></i> 01 / 10 / 2025</span>
-                                                       <span><i class="fa fa-clock-o"></i> 1 hora</span>
-                                                  </div>
-                                             </div>
-
-                                             <div class="courses-detail">
-                                                  <h3><a href="mentor3.html">Mentoria em TI</a></h3>
-                                                  <p>Orientação de carreira e revisão de perfil digital.</p>
-                                                  <p>** Grátis ao adquirir mentoria paga! ** </p>  
-                                             </div>
-
-                                             <div class="courses-info">
-                                                  <div class="courses-author">
-                                                       <img src="images/author-image1.jpg" class="img-responsive" alt="">
-                                                       <span>Carlos Oliveira</span>
-                                                  </div>
-                                                  <div class="courses-price free">
-                                                       <a href="mentor3.html"><span>150€</span></a>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                   </div>
-                              </div>
-
-                              <div class="col-md-4 col-sm-4">
-                                   <div class="item">
-                                        <div class="courses-thumb">
-                                             <div class="courses-top">
-                                                  <div class="courses-image">
-                                                       <img src="images/courses-image4.jpg" class="img-responsive" alt="">
-                                                  </div>
-                                                  <div class="courses-date">
-                                                       <span><i class="fa fa-calendar"></i> Em breve </span>
-                                                       <span><i class="fa fa-clock-o"></i> 4 horas</span>
-                                                  </div>
-                                             </div>
-
-                                             <div class="courses-detail">
-                                                  <h3><a href="#">Desafios de inverno</a></h3>
-                                                  <p>Desafios para produtos do Mercado Digital do 0 ao 100.</p>
-                                                  <p>Criando seus produtos!</p>
-                                             </div>
-
-                                             <div class="courses-info">
-                                                  <div class="courses-author">
-                                                       <img src="images/author-image2.jpg" class="img-responsive" alt="">
-                                                       <span>Jennifer S.</span>
-                                                  </div>
-                                                  <div class="courses-price">
-                                                       <a href="#"><span> Em breve </span></a>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                   </div>
-                              </div>
-
-                              <div class="col-md-4 col-sm-4">
-                                   <div class="item">
-                                        <div class="courses-thumb">
-                                             <div class="courses-top">
-                                                  <div class="courses-image">
-                                                       <img src="images/courses-image5.jpg" class="img-responsive" alt="">
-                                                  </div>
-                                                  <div class="courses-date">
-                                                       <span><i class="fa fa-calendar"></i> 03 / 10 / 2025</span>
-                                                       <span><i class="fa fa-clock-o"></i> 8 horas</span>
-                                                  </div>
-                                             </div>
-
-                                             <div class="courses-detail">
-                                                  <h3><a href="mentor5.html">Teste de Sofwares &amp; Automação</a></h3>
-                                                  <p>Como se tornar um engenheiro de testes de software automatizados, do 0 ao 100.</p>
-                                             </div>
-
-                                             <div class="courses-info">
-                                                  <div class="courses-author">
-                                                       <img src="images/author-image1.jpg" class="img-responsive" alt="">
-                                                       <span>Carlos Oliveira</span>
-                                                  </div>
-                                                  <div class="courses-price">
-                                                       <a href="mentor5.html"><span>960€</span></a>
-                                                  </div>
-                                             </div>
-                                        </div>
-                                   </div>
-                              </div>
-
-                         </div>
-
-               </div>
-          </div>
-     </section>
-
-
-     <!-- TESTIMONIAL -->
-     <section id="testimonial">
-          <div class="container">
-               <div class="row">
-
-                    <div class="col-md-12 col-sm-12">
-                         <div class="section-title">
-                              <h2>Depoimentos <small>sobre nosso profissionais</small></h2>
-                         </div>
-
-                         <div class="owl-carousel owl-theme owl-client">
-                              <div class="col-md-4 col-sm-4">
-                                   <div class="item">
-                                        <div class="tst-image">
-                                             <img src="images/tst-image1.jpg" class="img-responsive" alt="">
-                                        </div>
-                                        <div class="tst-author">
-                                             <h4>Emiliya Netunaeva</h4>
-                                             <span>Product Marketing Manager</span>
-                                        </div>
-                                        <p>Carefully responds to all feedback, and brings a lot of new ideas on what should be improved and how exactly we should proceed with the updates. Also the first one to do those changes. To get to all types of new interactions because I know that we will bring the best to the mentoring.</p>
-                                        <div class="tst-rating">
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                        </div>
-                                   </div>
-                              </div>
-
-                              <div class="col-md-4 col-sm-4">
-                                   <div class="item">
-                                        <div class="tst-image">
-                                             <img src="images/tst-image2.jpg" class="img-responsive" alt="">
-                                        </div>
-                                        <div class="tst-author">
-                                             <h4>Anna Mitrofanova</h4>
-                                             <span>IT Recruiter</span>
-                                        </div>
-                                        <p>Trying something new is exciting! Thanks for the amazing law course and the great teacher who was able to make it interesting.</p>
-                                        <div class="tst-rating">
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                        </div>
-                                   </div>
-                              </div>
-
-                              <div class="col-md-4 col-sm-4">
-                                   <div class="item">
-                                        <div class="tst-image">
-                                             <img src="images/tst-image3.jpg" class="img-responsive" alt="">
-                                        </div>
-                                        <div class="tst-author">
-                                             <h4>Urban Mäder</h4>
-                                             <span>Co-founder FLARM Technology Company</span>
-                                        </div>
-                                        <p>Committed with mentoring activities, alert to the constant changes in the development sector, and focused on delivering results.</p>
-                                        <div class="tst-rating">
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                        </div>
-                                   </div>
-                              </div>
-
-                              <div class="col-md-4 col-sm-4">
-                                   <div class="item">
-                                        <div class="tst-image">
-                                             <img src="images/tst-image4.jpg" class="img-responsive" alt="">
-                                        </div>
-                                        <div class="tst-author">
-                                             <h4>Ana Gonçalves</h4>
-                                             <span>Supplier QA Specialist</span>
-                                        </div>
-                                        <p>Extrema responsabilidade e dedicação, que trouxeram a diferença em minha jornada!.</p>
-                                        <div class="tst-rating">
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                             <i class="fa fa-star"></i>
-                                        </div>
-                                   </div>
-                              </div>
-
-                         </div>
-
-               </div>
-          </div>
-     </section> 
-
-
-     <!-- CONTACT -->
-     <section id="contact">
-          <div class="container">
-               <div class="row">
-
-                    <div class="col-md-6 col-sm-12">
-                         <form id="contact-form" role="form" >
-                              <div class="section-title">
-                                   <h2>Entre em contato conosco <small>Nós amamos contatos novos. vamos conversar!</small></h2>
-                              </div>
-
-                              <div class="col-md-12 col-sm-12">
-                                   <input type="text" class="form-control" placeholder="Insira seu nome completo" name="name" required="">
-                    
-                                   <input type="email" class="form-control" placeholder="Insira seu endereço de email" name="emaill" required="">
-
-                                   <textarea class="form-control" rows="4" placeholder="Insira sua mensagem" name="messages" required=""></textarea>
-                              </div>
-
-                              <div class="col-md-4 col-sm-12">
-                                   <input type="submit" class="form-control" name="send message" value="Enviar mensagem"  onclick="submitForm()">
-                                   
-                              </div>   
-
-
-                         </form>
-
-                                   <script>
-                                   function submitForm(){
-                                   var fname = document.getElementsByName("name")[0].value;
-                                   var email = document.getElementsByName("emaill")[0].value;
-                                   var message = document.getElementsByName("messages")[0].value;
-                                   window.open("mailto:mentoringceoknowhow@gmail.com?subject=Entre em contato conosco!%20&body=NOME:%20"+fname+"%0D%0A%0DEmail:"+email+"%0D%0A%0DMensagem:"+message);
-                                   }
-                                   </script>
-
-
-                    </div>
-
-                    <div class="col-md-6 col-sm-50">
-                         <div class="contact-image">
-                              <img src="images/contact-image.jpg" class="img-responsive" alt="Contact us">
-                         </div>
-                    </div>
-
-               </div>
-          </div>
-     </section>       
-
-
-     <!-- FOOTER -->
-     <footer id="footer">
-          <div class="container">
-               <div class="row">
-
-                    <div class="col-md-4 col-sm-6">
-                         <div class="footer-info">
-                              <div class="section-title">
-                                   <h2>Headquarter</h2>
-                              </div>
-                              <address>
-                                   <p>Lisboa<br>PT</p>
-                              </address>
-
-                              <ul class="social-icon">
-                               <!--    <li><a href="#" class="fa fa-facebook-square" attr="facebook icon"></a></li>
-                                   <li><a href="#" class="fa fa-instagram"></a></li> -->
-                                   <li><a href="https://www.linkedin.com/company/ceo-mentoring-improvements/" class="fa fa-linkedin"></a></li>
-                                   <li><a href="https://github.com/carlos-eduardo-1984" class="fa fa-github"></a></li>
-                              </ul>
-
-                              <div class="copyright-text"> 
-                                   <p>Copyright &copy; 2015 CEO Mentorias</p>
-                                   
-                                   <p>Design: CEO</p>
-                              </div>
-                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-6">
-                         <div class="footer-info">
-                              <div class="section-title">
-                                   <h2>Contatos Info</h2>
-                              </div>
-                              <address>
-                                   <p>+351 </p>
-                                   <p><a href="mailto:youremail.co">mentoringceoknowhow@gmail.com</a></p>
-                              </address>
-
-                              <div class="footer_menu">
-                                   <h2>Links</h2>
-                                   <ul>
-                                        <li><a href="Terms.html">Termos & Condições</a></li>
-                                        <li><a href="Refound.html">Políticas de reembolso</a></li>
-                                   </ul>
-                              </div>
-                         </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-12">
-                         <div class="footer-info newsletter-form">
-                   
-                         </div>
-                    </div>
-                    
-               </div>
-          </div>
-     </footer>
-
-
-     <!-- SCRIPTS -->
-     <script src="js/jquery.js"></script>
-     <script src="js/bootstrap.min.js"></script>
-     <script src="js/owl.carousel.min.js"></script>
-     <script src="js/smoothscroll.js"></script>
-     <script src="js/custom.js"></script>
-
+        </div>
+        <aside class="hero-card" aria-label="Highlights" data-i18n-aria-label="hero.highlightsLabel">
+          <h2 data-i18n="hero.cardTitle">Aprendizado orientado a resultados</h2>
+          <ul class="hero-list">
+            <li><i class="fa fa-check-circle" aria-hidden="true"></i><span data-i18n="hero.item1">Plano adaptado ao seu nível e disponibilidade</span></li>
+            <li><i class="fa fa-check-circle" aria-hidden="true"></i><span data-i18n="hero.item2">Desafios práticos e acompanhamento individual</span></li>
+            <li><i class="fa fa-check-circle" aria-hidden="true"></i><span data-i18n="hero.item3">Experiência aplicada em empresas globais</span></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container">
+        <div class="section-heading">
+          <h2 data-i18n="process.title">Comece sua jornada em três passos</h2>
+          <p data-i18n="process.subtitle">Uma abordagem simples, personalizada e orientada à prática.</p>
+        </div>
+        <div class="cards">
+          <article class="card"><span class="step-number">01</span><h3 data-i18n="process.step1Title">Conversa inicial</h3><p data-i18n="process.step1Text">Compartilhamos expectativas, objetivos e desafios para compreender o seu momento profissional.</p></article>
+          <article class="card"><span class="step-number">02</span><h3 data-i18n="process.step2Title">Plano personalizado</h3><p data-i18n="process.step2Text">Criamos uma jornada de mentoria alinhada à sua experiência, rotina e disponibilidade.</p></article>
+          <article class="card"><span class="step-number">03</span><h3 data-i18n="process.step3Title">Prática e evolução</h3><p data-i18n="process.step3Text">Aplicamos desafios, materiais e feedback contínuo para transformar conhecimento em resultado.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-grid">
+        <div class="about-copy">
+          <p class="eyebrow" style="color:var(--secondary)" data-i18n="about.eyebrow">Sobre a experiência</p>
+          <h2 data-i18n="about.title">Mentoria online com orientação próxima e experiência real</h2>
+          <div class="benefit"><span class="benefit-icon"><i class="fa fa-users"></i></span><div><h3 data-i18n="about.onlineTitle">Sessões online</h3><p data-i18n="about.onlineText">Participe de casa ou de onde for mais confortável e produtivo para você.</p></div></div>
+          <div class="benefit"><span class="benefit-icon"><i class="fa fa-certificate"></i></span><div><h3 data-i18n="about.experienceTitle">Mentores qualificados</h3><p data-i18n="about.experienceText">Experiência prática em tecnologia, negócios e projetos para organizações globais.</p></div></div>
+          <div class="benefit"><span class="benefit-icon"><i class="fa fa-line-chart"></i></span><div><h3 data-i18n="about.supportTitle">Suporte após a mentoria</h3><p data-i18n="about.supportText">Continue contando com nosso canal de suporte após a conclusão da jornada.</p></div></div>
+        </div>
+
+        <div class="form-card">
+          <h2 data-i18n="form.startTitle">Inicie sua mentoria</h2>
+          <form id="mentoring-form">
+            <div class="form-group"><label for="mentor-name" data-i18n="form.nameLabel">Nome completo</label><input id="mentor-name" class="form-control" type="text" name="name" required autocomplete="name" data-i18n-placeholder="form.namePlaceholder" placeholder="Seu nome completo"></div>
+            <div class="form-group"><label for="mentor-email" data-i18n="form.emailLabel">E-mail</label><input id="mentor-email" class="form-control" type="email" name="email" required autocomplete="email" data-i18n-placeholder="form.emailPlaceholder" placeholder="seu@email.com"></div>
+            <div class="form-group"><label for="mentor-message" data-i18n="form.goalsLabel">Objetivos</label><textarea id="mentor-message" class="form-control" name="message" required data-i18n-placeholder="form.goalsPlaceholder" placeholder="Conte-nos sobre seus objetivos"></textarea></div>
+            <button class="btn btn-primary" type="submit"><i class="fa fa-envelope"></i><span data-i18n="form.send">Enviar solicitação</span></button>
+            <p class="form-note" data-i18n="form.note">Ao enviar, seu aplicativo de e-mail será aberto com a mensagem preenchida.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="team">
+      <div class="container">
+        <div class="section-heading"><h2 data-i18n="team.title">Conheça nossos mentores</h2><p data-i18n="team.subtitle">Profissionais com experiências complementares para apoiar diferentes objetivos.</p></div>
+        <div class="team-grid">
+          <article class="card person"><img src="images/author-image1.jpg" alt="Carlos Oliveira" loading="lazy"><div class="person-content"><h3>Carlos Oliveira</h3><span class="person-role" data-i18n="team.carlosRole">Senior Software Quality & Test Automation Engineer</span><ul class="social"><li><a href="https://www.linkedin.com/in/carlosoliveira1984" target="_blank" rel="noopener noreferrer" aria-label="Carlos Oliveira LinkedIn"><i class="fa fa-linkedin"></i></a></li><li><a href="https://github.com/carlos-eduardo-1984" target="_blank" rel="noopener noreferrer" aria-label="Carlos Oliveira GitHub"><i class="fa fa-github"></i></a></li></ul></div></article>
+          <article class="card person"><img src="images/author-image2.jpg" alt="Jennifer S." loading="lazy"><div class="person-content"><h3>Jennifer S.</h3><span class="person-role" data-i18n="team.jenniferRole">Marketing Digital</span></div></article>
+          <article class="card person"><img src="images/author-image3.jpg" alt="Bianca Racio" loading="lazy"><div class="person-content"><h3>Bianca Racio</h3><span class="person-role" data-i18n="team.biancaRole">Scrum Coach e Analista de Negócios de TI</span><ul class="social"><li><a href="https://www.linkedin.com/in/bianca-n-rascio-74127b108/" target="_blank" rel="noopener noreferrer" aria-label="Bianca Racio LinkedIn"><i class="fa fa-linkedin"></i></a></li><li><a href="mailto:biancarascio@gmail.com" aria-label="Email Bianca Racio"><i class="fa fa-envelope-o"></i></a></li></ul></div></article>
+          <article class="card person"><img src="images/author-image4.jpg" alt="Jonathan Silva" loading="lazy"><div class="person-content"><h3>Jonathan Silva</h3><span class="person-role" data-i18n="team.jonathanRole">Senior Full Stack Software Engineer</span><ul class="social"><li><a href="mailto:jilds@outlook.com" aria-label="Email Jonathan Silva"><i class="fa fa-envelope-o"></i></a></li><li><a href="https://www.linkedin.com/in/jonathan-inacio/overlay/contact-info/" target="_blank" rel="noopener noreferrer" aria-label="Jonathan Silva LinkedIn"><i class="fa fa-linkedin"></i></a></li></ul></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="courses" id="courses">
+      <div class="container">
+        <div class="section-heading"><h2 data-i18n="courses.title">Portfólio de mentorias</h2><p data-i18n="courses.subtitle">Escolha uma jornada prática para desenvolver habilidades relevantes para o mercado.</p></div>
+        <div class="course-grid">
+          <article class="card course"><img src="images/courses-image1.jpg" alt="Functional software testing" data-i18n-alt="courses.course1Alt" loading="lazy"><div class="course-body"><div class="course-meta"><span><i class="fa fa-clock-o"></i> <span data-i18n="courses.fourHours">4 horas</span></span><span><i class="fa fa-laptop"></i> Online</span></div><h3 data-i18n="courses.course1Title">Testes funcionais para projetos de software</h3><p data-i18n="courses.course1Text">Descubra uma carreira em tecnologia sem precisar começar pela programação.</p><div class="course-footer"><span>Carlos Oliveira</span><span class="price">480€</span></div></div></article>
+          <article class="card course"><img src="images/courses-image3.jpg" alt="IT career mentoring" data-i18n-alt="courses.course2Alt" loading="lazy"><div class="course-body"><div class="course-meta"><span><i class="fa fa-clock-o"></i> <span data-i18n="courses.oneHour">1 hora</span></span><span><i class="fa fa-laptop"></i> Online</span></div><h3 data-i18n="courses.course2Title">Mentoria de carreira em TI</h3><p data-i18n="courses.course2Text">Orientação profissional, estratégia de carreira e revisão de presença digital.</p><div class="course-footer"><span>Carlos Oliveira</span><span class="price">150€</span></div></div></article>
+          <article class="card course"><img src="images/courses-image5.jpg" alt="Software testing and automation" data-i18n-alt="courses.course3Alt" loading="lazy"><div class="course-body"><div class="course-meta"><span><i class="fa fa-clock-o"></i> <span data-i18n="courses.eightHours">8 horas</span></span><span><i class="fa fa-laptop"></i> Online</span></div><h3 data-i18n="courses.course3Title">Testes de software e automação</h3><p data-i18n="courses.course3Text">Aprenda os fundamentos e a prática para evoluir em automação de testes.</p><div class="course-footer"><span>Carlos Oliveira</span><span class="price">960€</span></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <div class="container">
+        <div class="section-heading"><h2 data-i18n="testimonials.title">Depoimentos</h2><p data-i18n="testimonials.subtitle">Experiências compartilhadas por profissionais que conhecem nosso trabalho.</p></div>
+        <div class="testimonial-grid">
+          <article class="card quote"><p data-i18n="testimonials.quote1">“Responde cuidadosamente aos feedbacks, apresenta novas ideias e toma a iniciativa para implementar melhorias.”</p><div class="quote-author"><img src="images/tst-image1.jpg" alt="Emiliya Netunaeva" loading="lazy"><div><h3>Emiliya Netunaeva</h3><span>Product Marketing Manager</span></div></div><div class="stars" aria-label="5 stars">★★★★★</div></article>
+          <article class="card quote"><p data-i18n="testimonials.quote2">“Comprometido com as atividades de mentoria, atento às mudanças do setor e focado em entregar resultados.”</p><div class="quote-author"><img src="images/tst-image3.jpg" alt="Urban Mäder" loading="lazy"><div><h3>Urban Mäder</h3><span>Co-founder, FLARM Technology</span></div></div><div class="stars" aria-label="5 stars">★★★★★</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container contact-grid">
+        <div>
+          <h2 data-i18n="contact.title">Vamos conversar sobre seus objetivos?</h2>
+          <p data-i18n="contact.subtitle">Envie uma mensagem e conte-nos qual desafio você quer superar ou qual habilidade deseja desenvolver.</p>
+          <form id="contact-form">
+            <div class="form-group"><label for="contact-name" data-i18n="form.nameLabel">Nome completo</label><input id="contact-name" class="form-control" type="text" required autocomplete="name" data-i18n-placeholder="form.namePlaceholder" placeholder="Seu nome completo"></div>
+            <div class="form-group"><label for="contact-email" data-i18n="form.emailLabel">E-mail</label><input id="contact-email" class="form-control" type="email" required autocomplete="email" data-i18n-placeholder="form.emailPlaceholder" placeholder="seu@email.com"></div>
+            <div class="form-group"><label for="contact-message" data-i18n="contact.messageLabel">Mensagem</label><textarea id="contact-message" class="form-control" required data-i18n-placeholder="contact.messagePlaceholder" placeholder="Como podemos ajudar?"></textarea></div>
+            <button class="btn btn-primary" type="submit"><i class="fa fa-paper-plane"></i><span data-i18n="contact.send">Enviar mensagem</span></button>
+          </form>
+        </div>
+        <img src="images/contact-image.jpg" alt="Contact CEO Mentorias" data-i18n-alt="contact.imageAlt" loading="lazy">
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div><h2>CEO Mentorias</h2><p data-i18n="footer.description">Mentorias profissionais para acelerar carreiras por meio de conhecimento, prática e orientação personalizada.</p><ul class="social"><li><a href="https://www.linkedin.com/company/ceo-mentoring-improvements/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa fa-linkedin"></i></a></li><li><a href="https://github.com/carlos-eduardo-1984" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa fa-github"></i></a></li></ul></div>
+        <div><h2 data-i18n="footer.locationTitle">Localização</h2><p>Valencia, ES</p><p data-i18n="footer.remote">Atendimento online internacional</p></div>
+        <div><h2 data-i18n="footer.linksTitle">Links</h2><ul class="footer-links"><li><a href="Terms.html" data-i18n="footer.terms">Termos e condições</a></li><li><a href="Refound.html" data-i18n="footer.refund">Política de reembolso</a></li><li><a href="mailto:mentoringceoknowhow@gmail.com">mentoringceoknowhow@gmail.com</a></li></ul></div>
+      </div>
+      <p class="copyright">© <span id="current-year"></span> CEO Mentorias. <span data-i18n="footer.rights">Todos os direitos reservados.</span></p>
+    </div>
+  </footer>
+
+  <script>
+    const translations = {
+      pt: {
+        meta: { title: "CEO Mentorias | Mentoria profissional online", description: "Mentorias online personalizadas em tecnologia, qualidade de software, carreira e desenvolvimento profissional." },
+        accessibility: { skip: "Ir para o conteúdo", mainNav: "Navegação principal", openMenu: "Abrir menu", closeMenu: "Fechar menu", languageSelector: "Selecionar idioma" },
+        nav: { home: "Início", about: "Sobre", team: "Equipe", courses: "Mentorias", testimonials: "Depoimentos", contact: "Contato" },
+        hero: { eyebrow: "Mentoria personalizada", title: "Transforme sua carreira com mentorias práticas", subtitle: "Conhecimento aplicado à sua rotina, aos seus objetivos e às oportunidades reais do mercado.", primaryCta: "Conheça as mentorias", secondaryCta: "Fale conosco", cardTitle: "Aprendizado orientado a resultados", item1: "Plano adaptado ao seu nível e disponibilidade", item2: "Desafios práticos e acompanhamento individual", item3: "Experiência aplicada em empresas globais", highlightsLabel: "Destaques das mentorias" },
+        process: { title: "Comece sua jornada em três passos", subtitle: "Uma abordagem simples, personalizada e orientada à prática.", step1Title: "Conversa inicial", step1Text: "Compartilhamos expectativas, objetivos e desafios para compreender o seu momento profissional.", step2Title: "Plano personalizado", step2Text: "Criamos uma jornada de mentoria alinhada à sua experiência, rotina e disponibilidade.", step3Title: "Prática e evolução", step3Text: "Aplicamos desafios, materiais e feedback contínuo para transformar conhecimento em resultado." },
+        about: { eyebrow: "Sobre a experiência", title: "Mentoria online com orientação próxima e experiência real", onlineTitle: "Sessões online", onlineText: "Participe de casa ou de onde for mais confortável e produtivo para você.", experienceTitle: "Mentores qualificados", experienceText: "Experiência prática em tecnologia, negócios e projetos para organizações globais.", supportTitle: "Suporte após a mentoria", supportText: "Continue contando com nosso canal de suporte após a conclusão da jornada." },
+        form: { startTitle: "Inicie sua mentoria", nameLabel: "Nome completo", namePlaceholder: "Seu nome completo", emailLabel: "E-mail", emailPlaceholder: "seu@email.com", goalsLabel: "Objetivos", goalsPlaceholder: "Conte-nos sobre seus objetivos", send: "Enviar solicitação", note: "Ao enviar, seu aplicativo de e-mail será aberto com a mensagem preenchida." },
+        team: { title: "Conheça nossos mentores", subtitle: "Profissionais com experiências complementares para apoiar diferentes objetivos.", carlosRole: "Engenheiro Sênior de Qualidade e Automação de Testes", jenniferRole: "Marketing Digital", biancaRole: "Scrum Coach e Analista de Negócios de TI", jonathanRole: "Engenheiro de Software Full Stack Sênior" },
+        courses: { title: "Portfólio de mentorias", subtitle: "Escolha uma jornada prática para desenvolver habilidades relevantes para o mercado.", fourHours: "4 horas", oneHour: "1 hora", eightHours: "8 horas", course1Title: "Testes funcionais para projetos de software", course1Text: "Descubra uma carreira em tecnologia sem precisar começar pela programação.", course2Title: "Mentoria de carreira em TI", course2Text: "Orientação profissional, estratégia de carreira e revisão de presença digital.", course3Title: "Testes de software e automação", course3Text: "Aprenda os fundamentos e a prática para evoluir em automação de testes.", course1Alt: "Mentoria em testes funcionais", course2Alt: "Mentoria de carreira em tecnologia", course3Alt: "Mentoria em testes e automação" },
+        testimonials: { title: "Depoimentos", subtitle: "Experiências compartilhadas por profissionais que conhecem nosso trabalho.", quote1: "“Responde cuidadosamente aos feedbacks, apresenta novas ideias e toma a iniciativa para implementar melhorias.”", quote2: "“Comprometido com as atividades de mentoria, atento às mudanças do setor e focado em entregar resultados.”" },
+        contact: { title: "Vamos conversar sobre seus objetivos?", subtitle: "Envie uma mensagem e conte-nos qual desafio você quer superar ou qual habilidade deseja desenvolver.", messageLabel: "Mensagem", messagePlaceholder: "Como podemos ajudar?", send: "Enviar mensagem", imageAlt: "Conversa de mentoria profissional" },
+        footer: { description: "Mentorias profissionais para acelerar carreiras por meio de conhecimento, prática e orientação personalizada.", locationTitle: "Localização", remote: "Atendimento online internacional", linksTitle: "Links", terms: "Termos e condições", refund: "Política de reembolso", rights: "Todos os direitos reservados." },
+        email: { mentoringSubject: "Quero iniciar uma mentoria", contactSubject: "Contato pelo site CEO Mentorias", name: "Nome", email: "E-mail", message: "Mensagem" }
+      },
+      en: {
+        meta: { title: "CEO Mentoring | Professional online mentoring", description: "Personalized online mentoring in technology, software quality, career development and professional growth." },
+        accessibility: { skip: "Skip to content", mainNav: "Main navigation", openMenu: "Open menu", closeMenu: "Close menu", languageSelector: "Select language" },
+        nav: { home: "Home", about: "About", team: "Team", courses: "Mentoring", testimonials: "Testimonials", contact: "Contact" },
+        hero: { eyebrow: "Personalized mentoring", title: "Transform your career through practical mentoring", subtitle: "Knowledge tailored to your routine, your goals and real opportunities in the market.", primaryCta: "Explore mentoring", secondaryCta: "Contact us", cardTitle: "Results-driven learning", item1: "A plan adapted to your level and availability", item2: "Practical challenges and individual support", item3: "Experience gained through global organizations", highlightsLabel: "Mentoring highlights" },
+        process: { title: "Start your journey in three steps", subtitle: "A simple, personalized and practice-oriented approach.", step1Title: "Initial conversation", step1Text: "We discuss your expectations, goals and challenges to understand your current professional situation.", step2Title: "Personalized plan", step2Text: "We create a mentoring journey aligned with your experience, routine and availability.", step3Title: "Practice and progress", step3Text: "We use challenges, learning materials and continuous feedback to turn knowledge into results." },
+        about: { eyebrow: "About the experience", title: "Online mentoring with close guidance and real-world experience", onlineTitle: "Online sessions", onlineText: "Join from home or wherever you feel most comfortable and productive.", experienceTitle: "Qualified mentors", experienceText: "Practical experience in technology, business and projects for global organizations.", supportTitle: "Post-mentoring support", supportText: "Continue using our support channel after completing your mentoring journey." },
+        form: { startTitle: "Start your mentoring journey", nameLabel: "Full name", namePlaceholder: "Your full name", emailLabel: "Email", emailPlaceholder: "your@email.com", goalsLabel: "Goals", goalsPlaceholder: "Tell us about your goals", send: "Send request", note: "Submitting the form will open your email application with a prepared message." },
+        team: { title: "Meet our mentors", subtitle: "Professionals with complementary experience to support different goals.", carlosRole: "Senior Software Quality & Test Automation Engineer", jenniferRole: "Digital Marketing", biancaRole: "Scrum Coach & IT Business Analyst", jonathanRole: "Senior Full Stack Software Engineer" },
+        courses: { title: "Mentoring portfolio", subtitle: "Choose a practical journey to build skills that are relevant to the market.", fourHours: "4 hours", oneHour: "1 hour", eightHours: "8 hours", course1Title: "Functional testing for software projects", course1Text: "Discover a technology career without having to start with programming.", course2Title: "IT career mentoring", course2Text: "Career guidance, professional strategy and digital presence review.", course3Title: "Software testing and automation", course3Text: "Learn the foundations and practical skills needed to grow in test automation.", course1Alt: "Functional testing mentoring", course2Alt: "Technology career mentoring", course3Alt: "Software testing and automation mentoring" },
+        testimonials: { title: "Testimonials", subtitle: "Experiences shared by professionals who know our work.", quote1: "“Carefully responds to feedback, contributes new ideas and takes the initiative to implement improvements.”", quote2: "“Committed to mentoring, attentive to industry changes and focused on delivering results.”" },
+        contact: { title: "Shall we talk about your goals?", subtitle: "Send us a message and tell us which challenge you want to overcome or which skill you want to develop.", messageLabel: "Message", messagePlaceholder: "How can we help?", send: "Send message", imageAlt: "Professional mentoring conversation" },
+        footer: { description: "Professional mentoring to accelerate careers through knowledge, practice and personalized guidance.", locationTitle: "Location", remote: "International online mentoring", linksTitle: "Links", terms: "Terms and conditions", refund: "Refund policy", rights: "All rights reserved." },
+        email: { mentoringSubject: "I want to start a mentoring journey", contactSubject: "Contact from CEO Mentoring website", name: "Name", email: "Email", message: "Message" }
+      }
+    };
+
+    let currentLanguage = localStorage.getItem("ceo-language") || (navigator.language.toLowerCase().startsWith("pt") ? "pt" : "en");
+    if (!translations[currentLanguage]) currentLanguage = "pt";
+
+    const getValue = (object, path) => path.split(".").reduce((value, key) => value && value[key], object);
+
+    function setLanguage(language) {
+      currentLanguage = translations[language] ? language : "pt";
+      localStorage.setItem("ceo-language", currentLanguage);
+      document.documentElement.lang = currentLanguage;
+
+      document.querySelectorAll("[data-i18n]").forEach(element => {
+        const value = getValue(translations[currentLanguage], element.dataset.i18n);
+        if (value) element.textContent = value;
+      });
+      document.querySelectorAll("[data-i18n-placeholder]").forEach(element => {
+        const value = getValue(translations[currentLanguage], element.dataset.i18nPlaceholder);
+        if (value) element.placeholder = value;
+      });
+      document.querySelectorAll("[data-i18n-aria-label]").forEach(element => {
+        const value = getValue(translations[currentLanguage], element.dataset.i18nAriaLabel);
+        if (value) element.setAttribute("aria-label", value);
+      });
+      document.querySelectorAll("[data-i18n-alt]").forEach(element => {
+        const value = getValue(translations[currentLanguage], element.dataset.i18nAlt);
+        if (value) element.alt = value;
+      });
+      document.querySelectorAll("[data-language]").forEach(button => {
+        const active = button.dataset.language === currentLanguage;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+      document.title = translations[currentLanguage].meta.title;
+      document.getElementById("meta-description").content = translations[currentLanguage].meta.description;
+      document.getElementById("og-description").content = translations[currentLanguage].meta.description;
+    }
+
+    function openEmail(subject, name, email, message) {
+      const t = translations[currentLanguage].email;
+      const body = `${t.name}: ${name}\n${t.email}: ${email}\n\n${t.message}:\n${message}`;
+      window.location.href = `mailto:mentoringceoknowhow@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+
+    document.querySelectorAll("[data-language]").forEach(button => button.addEventListener("click", () => setLanguage(button.dataset.language)));
+
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navPanel = document.getElementById("nav-panel");
+    function setMenu(open) {
+      navPanel.classList.toggle("open", open);
+      document.body.classList.toggle("menu-open", open);
+      menuToggle.setAttribute("aria-expanded", String(open));
+      menuToggle.setAttribute("aria-label", translations[currentLanguage].accessibility[open ? "closeMenu" : "openMenu"]);
+      menuToggle.innerHTML = `<i class="fa fa-${open ? "times" : "bars"}" aria-hidden="true"></i>`;
+    }
+    menuToggle.addEventListener("click", () => setMenu(!navPanel.classList.contains("open")));
+    document.querySelectorAll(".nav-links a").forEach(link => link.addEventListener("click", () => setMenu(false)));
+    window.addEventListener("resize", () => { if (window.innerWidth > 991) setMenu(false); });
+
+    document.getElementById("mentoring-form").addEventListener("submit", event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      openEmail(translations[currentLanguage].email.mentoringSubject, form.name.value.trim(), form.email.value.trim(), form.message.value.trim());
+    });
+
+    document.getElementById("contact-form").addEventListener("submit", event => {
+      event.preventDefault();
+      openEmail(translations[currentLanguage].email.contactSubject, document.getElementById("contact-name").value.trim(), document.getElementById("contact-email").value.trim(), document.getElementById("contact-message").value.trim());
+    });
+
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+    setLanguage(currentLanguage);
+  </script>
 </body>
 </html>
-
-
